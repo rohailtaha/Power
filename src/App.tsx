@@ -4,6 +4,7 @@ import Battery from './Battery';
 import Grid from './Grid';
 import Home from './Home';
 import Sun from './Sun';
+import UnavailableDataFeedback from './UnavailableDataFeedback';
 import useApiPoll from './hooks/useApiPoll';
 import { EnergyData } from './types';
 
@@ -30,16 +31,22 @@ function App() {
 
   return (
     <>
-      <div className='sky'>
-        <Sun energy={data.solar} />
-      </div>
-      <div className='ground'>
-        <Grid power={data.grid} />
-        <div className='home-neighbourhood'>
-          <Battery battery={data.batt} batteryPercentage={data.batt_perc} />
-          <Home power={data.home} />
-        </div>
-      </div>
+      {parseFloat(data.powerwall_connection_status) !== 0 ? (
+        <>
+          <div className='sky'>
+            <Sun energy={data.solar} />
+          </div>
+          <div className='ground'>
+            <Grid power={data.grid} />
+            <div className='home-neighbourhood'>
+              <Battery battery={data.batt} batteryPercentage={data.batt_perc} />
+              <Home power={data.home} />
+            </div>
+          </div>
+        </>
+      ) : (
+        <UnavailableDataFeedback />
+      )}
     </>
   );
 }

@@ -48,6 +48,15 @@
   align-items: center;
 }
 
+.unavailable-data-feedback {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
 @media screen and (max-width: 756px) {
   .home-neighbourhood {
     grid-template-columns: 1fr;
