@@ -11,7 +11,7 @@ import { EnergyData } from './types';
 
 const defaultEnergyValues = {
   date: '',
-  time: '0',
+  time: '',
   time_short: '0',
   batt_perc: '0',
   batt: '0',
@@ -35,7 +35,7 @@ function App() {
     <>
       {parseFloat(data.powerwall_connection_status) !== 0 ? (
         <>
-          <DateTime date={data.date} time={data.time} />
+          {data.date !== '' && <DateTime date={data.date} time={data.time} />}
           <div className='sky'>
             <Sun energy={data.solar} />
           </div>
