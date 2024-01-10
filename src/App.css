@@ -1,5 +1,38 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
+  min-height: 100vh;
+}
+
+.sky {
+  min-height: 30vh;
+}
+
+.ground {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  min-height: 60vh;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: end;
+  gap: 20px;
+  justify-self: flex-end;
+}
+
+@media screen and (max-width: 520px) {
+  .home {
+    grid-template-columns: 1fr;
+    justify-self: center;
+    justify-items: center;
+  }
+
+  .ground {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 }
