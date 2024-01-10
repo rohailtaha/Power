@@ -1,12 +1,12 @@
-export function Battery() {
+export function Battery({ batteryPercentage }: { batteryPercentage: number }) {
   return (
     <svg
       width='120'
       height='62'
       viewBox='0 0 120 62'
-      fill='none'
+      fill='blue'
       xmlns='http://www.w3.org/2000/svg'
-      className='battery'
+      style={{ filter: `brightness(${batteryPercentage}%)` }}
     >
       <path
         d='M92.448 31C92.448 16.709 100.11 8.68 106.11 8.68H114C109.992 3.2085 106.674 0 92.052 0H32.004C9.6 0 0 17.7785 0 31C0 44.2215 9.6 62 32.004 62H92.052C106.68 62 109.992 58.7915 114 53.32H106.11C100.11 53.32 92.448 45.291 92.448 31ZM76.128 40.2742C75.144 41.5658 72.072 40.3568 72.072 40.3568L54.33 33.4438C54.33 33.4438 52.746 36.9055 51.528 39.339C50.298 41.7725 49.362 44.5263 44.274 41.447C39.18 38.3573 22.788 24.6553 22.788 24.6553C22.788 24.6553 20.718 23.188 21.75 21.8085C22.728 20.5065 25.806 21.7258 25.806 21.7258L43.542 28.6285C43.542 28.6285 45.132 25.1772 46.35 22.7437C47.58 20.3153 48.516 17.546 53.604 20.6357C58.698 23.715 75.084 37.4273 75.084 37.4273C75.084 37.4273 77.154 38.8895 76.128 40.2742ZM113.244 20.2947H108.75C105.396 20.2947 102.12 24.1903 102.12 30.5195C102.12 36.859 105.402 40.7495 108.75 40.7495H113.244C116.604 40.7495 120 36.8538 120 30.5195C120 24.1903 116.604 20.2947 113.244 20.2947Z'
@@ -16,33 +16,35 @@ export function Battery() {
   );
 }
 
-export function Home() {
+export function Home({ powerIntensity }: { powerIntensity: number }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       width='312'
       height='312'
       viewBox='0 0 512 512'
+      style={{ filter: `brightness(${powerIntensity}%)` }}
     >
       <path
-        fill='currentColor'
+        fill='blue'
         d='M261.56 101.28a8 8 0 0 0-11.06 0L66.4 277.15a8 8 0 0 0-2.47 5.79L63.9 448a32 32 0 0 0 32 32H192a16 16 0 0 0 16-16V328a8 8 0 0 1 8-8h80a8 8 0 0 1 8 8v136a16 16 0 0 0 16 16h96.06a32 32 0 0 0 32-32V282.94a8 8 0 0 0-2.47-5.79Z'
       />
       <path
-        fill='currentColor'
+        fill='blue'
         d='m490.91 244.15l-74.8-71.56V64a16 16 0 0 0-16-16h-48a16 16 0 0 0-16 16v32l-57.92-55.38C272.77 35.14 264.71 32 256 32c-8.68 0-16.72 3.14-22.14 8.63l-212.7 203.5c-6.22 6-7 15.87-1.34 22.37A16 16 0 0 0 43 267.56L250.5 69.28a8 8 0 0 1 11.06 0l207.52 198.28a16 16 0 0 0 22.59-.44c6.14-6.36 5.63-16.86-.76-22.97'
       />
     </svg>
   );
 }
 
-export function Sun() {
+export function Sun({ brightness }: { brightness: number }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       width='250'
       height='250'
       viewBox='0 0 256 256'
+      style={{ filter: `brightness(${brightness}%)` }}
     >
       <path
         fill='#ffc700'
@@ -59,7 +61,6 @@ export function Grid() {
       viewBox='0 0 32 40'
       x='0px'
       y='0px'
-      // width='400'
       height='300'
     >
       <g data-name='electric tower'>
@@ -72,13 +73,14 @@ export function Grid() {
   );
 }
 
-export function ArrowUp() {
+export function VerticalArrow({ direction }: { direction: 'up' | 'down' }) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
       width='24'
       height='24'
       viewBox='0 0 24 24'
+      style={{ rotate: direction === 'down' ? '180deg' : '0deg' }}
     >
       <path
         fill='currentColor'
@@ -88,13 +90,17 @@ export function ArrowUp() {
   );
 }
 
-export function ArrowRight() {
+export function HorizontalArrow({
+  direction,
+}: {
+  direction: 'right' | 'left';
+}) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='94'
-      height='24'
+      height='40'
       viewBox='0 0 512 512'
+      style={{ rotate: direction === 'left' ? '360deg' : '0deg' }}
     >
       <path
         fill='currentColor'

@@ -1,11 +1,29 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import './App.css';
+import Battery from './Battery';
+import Grid from './Grid';
+import Home from './Home';
+import Sun from './Sun';
 import useApiPoll from './hooks/useApiPoll';
-import { Battery, Grid, Home, Sun } from './icons';
+import { EnergyData } from './types';
+
+const defaultEnergyValues = {
+  time: '0',
+  time_short: '0',
+  batt_perc: '0',
+  batt: '0',
+  solar: '0',
+  home: '0',
+  grid: '0',
+  surplus: '0',
+  powerwall_connection_status: '0',
+};
 
 function App() {
-  const handleData = useCallback((data: Record<any, any>) => {
-    console.log(data);
+  const [data, setData] = useState<EnergyData>(defaultEnergyValues);
+
+  const handleData = useCallback((data: EnergyData) => {
+    setData(data);
   }, []);
 
   useApiPoll(handleData);
@@ -13,13 +31,13 @@ function App() {
   return (
     <>
       <div className='sky'>
-        <Sun />
+        <Sun energy={data.solar} />
       </div>
       <div className='ground'>
-        <Grid />
-        <div className='home'>
-          <Battery />
-          <Home />
+        <Grid power={data.grid} />
+        <div className='home-neighbourhood'>
+          <Battery battery={data.batt} batteryPercentage={data.batt_perc} />
+          <Home power={data.home} />
         </div>
       </div>
     </>

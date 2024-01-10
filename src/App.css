@@ -16,12 +16,37 @@
   min-height: 60vh;
 }
 
-.home {
+.home-neighbourhood {
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: end;
   gap: 20px;
   justify-self: flex-end;
+}
+
+.home-section {
+  display: grid;
+  justify-items: center;
+}
+
+.battery-section {
+  display: grid;
+  justify-items: center;
+}
+
+.sun-section {
+  display: grid;
+  justify-items: center;
+}
+
+.grid-section {
+  display: grid;
+  justify-items: center;
+}
+
+.flex-c {
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 520px) {

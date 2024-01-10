@@ -1,15 +1,11 @@
 import { useCallback, useEffect, useRef } from 'react';
+import { EnergyData } from '../types';
 
-function useApiPoll(cb: (data: Record<any, any>) => void) {
+function useApiPoll(cb: (data: EnergyData) => void) {
   const intervalRef = useRef<number | null>(null);
 
   const fetchData = useCallback(async () => {
-    // not fetched due to cors error
-    const response = await fetch('http://2.233.121.120:1085/energy.php', {
-      headers: {
-        'Accept': '*/*',
-      },
-    });
+    const response = await fetch('http://2.233.121.120:1085/energy.php');
     const data = await response.json();
     cb(data);
   }, [cb]);
