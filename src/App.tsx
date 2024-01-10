@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import './App.css';
 import Battery from './Battery';
+import DateTime from './DateTime';
 import Grid from './Grid';
 import Home from './Home';
 import Sun from './Sun';
@@ -9,6 +10,7 @@ import useApiPoll from './hooks/useApiPoll';
 import { EnergyData } from './types';
 
 const defaultEnergyValues = {
+  date: '',
   time: '0',
   time_short: '0',
   batt_perc: '0',
@@ -17,7 +19,7 @@ const defaultEnergyValues = {
   home: '0',
   grid: '0',
   surplus: '0',
-  powerwall_connection_status: '0',
+  powerwall_connection_status: '1',
 };
 
 function App() {
@@ -33,6 +35,7 @@ function App() {
     <>
       {parseFloat(data.powerwall_connection_status) !== 0 ? (
         <>
+          <DateTime date={data.date} time={data.time} />
           <div className='sky'>
             <Sun energy={data.solar} />
           </div>

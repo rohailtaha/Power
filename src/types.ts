@@ -1,4 +1,5 @@
 export type EnergyData = {
+  date: string;
   time: string;
   time_short: string;
   batt_perc: string;
